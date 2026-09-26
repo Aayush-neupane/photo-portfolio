@@ -43,9 +43,12 @@ export default function Nav() {
     <>
       <header className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
         <div className="nav-inner">
-          <a href="#top" className="brand" aria-label="Aayush Neupane — home">
-            <span className="brand-name">Aayush Neupane</span>
-            <span className="brand-sub">Photography · Jhapa</span>
+          <a href="#top" className="brand brand-with-mark" aria-label="Aayush Neupane — home">
+            <img src="/logotrp.png" alt="" aria-hidden="true" width={34} height={34} draggable={false} className="brand-mark-img" />
+            <span className="brand-text">
+              <span className="brand-name">Aayush Neupane</span>
+              <span className="brand-sub">Photography · Jhapa</span>
+            </span>
           </a>
           <nav className="nav-links" aria-label="Primary">
             {LINKS.map((l) => (
