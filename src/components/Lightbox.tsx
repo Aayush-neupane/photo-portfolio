@@ -27,6 +27,7 @@ export default function Lightbox({ images, index, onClose, onStep, onJump, onEnq
   }, []);
 
   const [playing, setPlaying] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!playing) return;
@@ -46,6 +47,42 @@ export default function Lightbox({ images, index, onClose, onStep, onJump, onEnq
   }, []);
 
   if (!im) return null;
+
+  const shareSupported = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+  const photoUrl = (): string => {
+    if (typeof window === 'undefined' || !im.src) return '';
+    return new URL(im.src, window.location.origin).href;
+  };
+  const fallbackCopy = async (): Promise<void> => {
+    const link = photoUrl();
+    try {
+      await navigator.clipboard.writeText(link);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = link;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
+  };
+  const sharePhoto = async (): Promise<void> => {
+    if (!shareSupported) {
+      await fallbackCopy();
+      return;
+    }
+    try {
+      await navigator.share({
+        title: `${im.alt || 'Photo'} — Aayush Neupane`,
+        text: im.cap || im.alt,
+        url: photoUrl(),
+      });
+    } catch {
+      /* dismissed — stay quiet */
+    }
+  };
 
   const hideLoupe = (): void => {
     if (loupeRef.current) loupeRef.current.style.opacity = '0';
@@ -86,6 +123,28 @@ export default function Lightbox({ images, index, onClose, onStep, onJump, onEnq
       }}
     >
       <button className="lb-btn lb-close" ref={closeRef} type="button" onClick={onClose} aria-label="Close viewer">✕</button>
+      <button
+        className="lb-btn lb-share"
+        type="button"
+        onClick={(e) => { e.stopPropagation(); void sharePhoto(); }}
+        aria-label={shareSupported ? `Share photo: ${im.alt}` : copied ? 'Photo link copied' : 'Copy photo link'}
+        title={shareSupported ? 'Share this frame' : copied ? 'Copied' : 'Copy link to this frame'}
+      >
+        {shareSupported ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+            <polyline points="16 6 12 2 8 6" />
+            <line x1="12" x2="12" y1="2" y2="15" />
+          </svg>
+        ) : copied ? (
+          <span aria-hidden="true">✓</span>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+        )}
+      </button>
       <button className="lb-btn lb-prev" type="button" onClick={(e) => { e.stopPropagation(); onStep(-1); }} aria-label="Previous image">←</button>
       <figure className="lb-fig" onMouseMove={moveLoupe} onMouseLeave={hideLoupe}>
         <img ref={imgRef} src={im.src} alt={im.alt} />
