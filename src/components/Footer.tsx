@@ -18,7 +18,7 @@ export default function Footer({ sound, onToggleSound }: { sound: boolean; onTog
       <div className="wrap">
         <div className="foot-top">
           <p className="foot-name foot-name-with-mark">
-            <img src="/logotrp.png" alt="" aria-hidden="true" width={44} height={44} draggable={false} loading="lazy" className="foot-mark" />
+            <img src="/logotrp.png" alt="" aria-hidden="true" width={64} height={64} draggable={false} loading="lazy" className="foot-mark" />
             <span>Aayush Neupane</span>
           </p>
           <nav className="foot-nav" aria-label="Footer">
