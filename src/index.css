@@ -33,7 +33,7 @@ a{color:inherit}
 .brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none;margin-right:auto}
 .brand-with-mark{flex-direction:row;align-items:center;gap:12px}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
-.brand-mark-img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2);flex-shrink:0}
+.brand-mark-img{width:34px;height:34px;object-fit:contain;flex-shrink:0}
 .brand-name{font-family:var(--serif);font-size:21px;font-weight:500;letter-spacing:.01em}
 .brand-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.6}
 .nav-links{display:flex;gap:30px;align-items:center}
@@ -261,7 +261,7 @@ a{color:inherit}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.14)}
 .foot-name{font-family:var(--serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:400;letter-spacing:-.02em}
 .foot-name-with-mark{display:flex;align-items:center;gap:16px}
-.foot-mark{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2);flex-shrink:0}
+.foot-mark{width:44px;height:44px;object-fit:contain;flex-shrink:0}
 .foot-nav{display:flex;gap:22px}
 .foot-nav a{font-size:13.5px;text-decoration:none;opacity:.8}
 .foot-nav a:hover{opacity:1}
