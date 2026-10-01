@@ -316,6 +316,7 @@ a{color:inherit}
 .pv-cap b{font-weight:500;overflow:hidden;text-overflow:ellipsis}
 .pv-cap i{font-style:normal;opacity:.7;flex-shrink:0}
 .pv-fig:hover .pv-cap,.pv-fig:focus-within .pv-cap{opacity:1}
+@media (hover:none){.pv-cap{opacity:1}}
 .pv-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-bottom:60px}
 .pv-nav button{background:none;border:0;cursor:pointer;text-align:left;padding:22px 4px;font-family:inherit;color:inherit}
 .pv-nav button:last-child{text-align:right;border-left:1px solid var(--line)}
