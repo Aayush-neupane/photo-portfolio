@@ -301,6 +301,21 @@ a{color:inherit}
 .pv-fig img{height:auto}
 .pv-fig.portrait{max-width:680px;margin-left:auto;margin-right:auto}
 .pv-fig figcaption{display:flex;justify-content:space-between;gap:16px;font-size:10.5px;color:var(--muted);padding-top:10px;letter-spacing:.1em}
+/* ── bento edit (experimental; drop the is-bento branch in ProjectOverlay to revert) ──
+   JS (lib/bento.ts) solves exact band heights from each photo's own aspect
+   ratio, so no frame is cropped and no gaps open up. CSS only lays out bands,
+   keeps the print-develop fade, and shows captions on hover. */
+.pv-gallery.is-bento{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+.pv-gallery.is-bento .pv-band{display:flex;flex-wrap:nowrap}
+.pv-gallery.is-bento .pv-fig{position:relative;margin:0;max-width:none;flex:none;overflow:hidden;background:var(--paper2)}
+.pv-gallery.is-bento .pv-stack{flex:none;display:flex;flex-direction:column}
+.pv-media{overflow:hidden;background:var(--paper2)}
+.pv-gallery.is-bento .pv-media img{width:100%;height:100%;display:block;cursor:zoom-in;object-fit:fill}
+.pv-gallery.is-bento .pv-media img{transition:opacity .8s ease,filter 1.2s ease}
+.pv-cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(12,11,10,.78));color:#F5EFE6;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;overflow:hidden}
+.pv-cap b{font-weight:500;overflow:hidden;text-overflow:ellipsis}
+.pv-cap i{font-style:normal;opacity:.7;flex-shrink:0}
+.pv-fig:hover .pv-cap,.pv-fig:focus-within .pv-cap{opacity:1}
 .pv-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-bottom:60px}
 .pv-nav button{background:none;border:0;cursor:pointer;text-align:left;padding:22px 4px;font-family:inherit;color:inherit}
 .pv-nav button:last-child{text-align:right;border-left:1px solid var(--line)}
@@ -407,6 +422,7 @@ a{color:inherit}
   .j-card{grid-column:1/13 !important}
   .j-card:first-child{grid-template-columns:1fr}
   .work-card{grid-column:1/13 !important;margin-top:0 !important}
+  .pv-gallery.is-bento{padding:0 clamp(14px,4vw,22px)}
   .process{grid-template-columns:1fr}.process ol{grid-template-columns:1fr 1fr}
   .hero-side{display:none}
   .lb-prev{left:8px}.lb-next{right:8px}
