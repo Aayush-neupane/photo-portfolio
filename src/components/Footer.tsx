@@ -18,7 +18,7 @@ export default function Footer({ sound, onToggleSound }: { sound: boolean; onTog
       <div className="wrap">
         <div className="foot-top">
           <p className="foot-name foot-name-with-mark">
-            <img src="/logotrp.png" alt="" aria-hidden="true" width={64} height={64} draggable={false} loading="lazy" className="foot-mark" />
+            <img src="/logo.svg" alt="" aria-hidden="true" width={64} height={64} draggable={false} loading="lazy" className="foot-mark" />
             <span>Aayush Neupane</span>
           </p>
           <nav className="foot-nav" aria-label="Footer">
@@ -44,7 +44,7 @@ export default function Footer({ sound, onToggleSound }: { sound: boolean; onTog
             rel="noopener noreferrer"
             aria-label="Aayush Neupane — portfolio"
           >
-            <img src="/logotrp.png" alt="Aayush Neupane" width={40} height={40} draggable={false} loading="lazy" />
+            <img src="/logo.svg" alt="Aayush Neupane" width={40} height={40} draggable={false} loading="lazy" />
             <span>Developed by <span>Aayush Neupane</span></span>
           </a>
         </div>

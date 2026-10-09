@@ -44,7 +44,7 @@ export default function Nav() {
       <header className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
         <div className="nav-inner">
           <a href="#top" className="brand brand-with-mark" aria-label="Aayush Neupane — home">
-            <img src="/logotrp.png" alt="" aria-hidden="true" width={42} height={42} draggable={false} className="brand-mark-img" />
+            <img src="/logo.svg" alt="" aria-hidden="true" width={42} height={42} draggable={false} className="brand-mark-img" />
             <span className="brand-text">
               <span className="brand-name">Aayush Neupane</span>
               <span className="brand-sub">Photography · Jhapa</span>
