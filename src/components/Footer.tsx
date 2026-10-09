@@ -39,7 +39,7 @@ export default function Footer({ sound, onToggleSound }: { sound: boolean; onTog
         </div>
         <div className="foot-credit">
           <a
-            href="https://dynamic-aayush38.netlify.app"
+            href="https://aayushnp.netlify.app"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Aayush Neupane — portfolio"
